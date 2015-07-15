@@ -10,7 +10,7 @@
     "build": "npm run bundle && npm run bundle:es6",
     "lint": "eslint lib/**",
     "lint:tests": "eslint spec/**",
-    "test": "npm run lint && ./node_modules/.bin/karma start --browsers PhantomJS --single-run",
+    "test": "npm run lint & ./node_modules/.bin/karma start --browsers PhantomJS --single-run",
     "test:watch": "karma start --browsers PhantomJS",
     "test:ie9": "karma start --single-run --browsers \"IE9 - Win7\"",
     "test:ie10": "karma start --single-run --browsers \"IE10 - Win7\"",
