@@ -1,0 +1,57 @@
+{
+  "name": "viewport-detection-es6",
+  "version": "0.0.0",
+  "description": "Viewport detaction in es6 ",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "browserify lib/viewport-detection.es6.js -t babelify  --stage 0 --extension=\"es6.js\" -t uglifyify --exclude babelify/polyfill --exclude lodash > dist/viewport-detection.min.js",
+    "bundle:es6": " babel lib/viewport-detection.es6.js --out-file index.js --source-maps --stage 0",
+    "bundle:watch": "watchify lib/viewport-detection.es6.js -t babelify  --stage 0 --extension=\"es6.js\" --exclude babelify/polyfill --exclude lodash -o dist/viewport-detection.js",
+    "build": "npm run bundle && npm run bundle:es6",
+    "lint": "eslint lib/**",
+    "lint:tests": "eslint spec/**",
+    "test": "npm run lint && ./node_modules/.bin/karma start --browsers PhantomJS --single-run",
+    "test:watch": "karma start --browsers PhantomJS",
+    "test:ie9": "karma start --single-run --browsers \"IE9 - Win7\"",
+    "test:ie10": "karma start --single-run --browsers \"IE10 - Win7\"",
+    "test:mac": "karma start --single-run --browsers Chrome,Firefox,Safari,Opera"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djforth/viewport-detection-es6.git"
+  },
+  "author": "Adrian Stainforth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/djforth/viewport-detection-es6/issues"
+  },
+  "homepage": "https://github.com/djforth/viewport-detection-es6#readme",
+  "devDependencies": {
+    "babel": "^5.6.14",
+    "babel-eslint": "^3.1.23",
+    "babelify": "^6.1.3",
+    "browserify": "^10.2.6",
+    "eslint": "^0.24.1",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.37",
+    "karma-babel-preprocessor": "^5.2.1",
+    "karma-browserify": "^4.2.1",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-coverage": "^0.4.2",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-ievms": "0.0.4",
+    "karma-jasmine": "^0.3.6",
+    "karma-opera-launcher": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-safari-launcher": "^0.1.1",
+    "karma-story-reporter": "^0.3.1",
+    "phantomjs": "^1.9.17",
+    "rewireify": "^0.2.1",
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.2.3"
+  },
+  "dependencies": {
+    "lodash": "^3.10.0"
+  }
+}
