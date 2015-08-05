@@ -21,6 +21,11 @@ var ViewportDetection = (function () {
   function ViewportDetection(cb) {
     _classCallCheck(this, ViewportDetection);
 
+    this.breakpoints = {
+      mobile: { st: 0, fn: 768 },
+      tablet: { st: 769, fn: 992 },
+      desktop: { st: 993, fn: "max" }
+    };
     this.currentWidth = 0;
     this.callbacks = [];
     this.trackerCalled = false;
@@ -30,17 +35,29 @@ var ViewportDetection = (function () {
   }
 
   _createClass(ViewportDetection, [{
-    key: "getDevice",
-    value: function getDevice() {
-      var winWidth = this.windowSize().width;
-      // console.log("winWidth", this.windowSize());
-      if (winWidth <= 991) {
-        return "mobile";
-      } else if (winWidth > 992 && winWidth < 1199) {
-        return "tablet";
+    key: "checkWidths",
+    value: function checkWidths(w, st, fn) {
+      if (fn === "max" && w > st) {
+        return true;
       }
 
-      return "desktop";
+      return w > st && w < fn;
+    }
+  }, {
+    key: "getDevice",
+    value: function getDevice() {
+      var _this = this;
+
+      var winWidth = this.windowSize().width;
+      var device = "desktop";
+
+      _.forIn(this.breakpoints, function (v, k) {
+        if (_this.checkWidths(winWidth, v.st, v.fn)) {
+          device = k;
+        }
+      });
+
+      return device;
     }
   }, {
     key: "getWidth",
@@ -53,10 +70,10 @@ var ViewportDetection = (function () {
   }, {
     key: "init",
     value: function init() {
-      var _this = this;
+      var _this2 = this;
 
       var tracker = (function () {
-        _this.resizeFn();
+        _this2.resizeFn();
       }).bind(this);
 
       window.addEventListener("resize", tracker, false);

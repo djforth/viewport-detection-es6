@@ -18,9 +18,9 @@ describe('viewport-detection-es6', function() {
       expect(viewport.currentWidth).toEqual(0);
       expect(viewport.callbacks).toEqual([]);
       expect(viewport.trackerCalled).toBeFalsy();
-      expect(viewport.breakpoints.mobile).toEqual({st:0, fn:991});
-      expect(viewport.breakpoints.tablet).toEqual({st:992, fn:1199});
-      expect(viewport.breakpoints.desktop).toEqual({st:1200, fn:"max"});
+      expect(viewport.breakpoints.mobile).toEqual({st:0, fn:768});
+      expect(viewport.breakpoints.tablet).toEqual({st:769, fn:992});
+      expect(viewport.breakpoints.desktop).toEqual({st:993, fn:"max"});
     });
 
     describe('add callback', function() {
@@ -61,14 +61,14 @@ describe('viewport-detection-es6', function() {
       });
 
       it("should set to tablet", function() {
-        val = 992;
+        val = 769;
 
         let device = viewport.getDevice();
         expect(device).toEqual("tablet")
       });
 
       it("should set to tablet", function() {
-        val = 1200;
+        val = 993;
 
         let device = viewport.getDevice();
         expect(device).toEqual("desktop")

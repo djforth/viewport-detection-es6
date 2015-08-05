@@ -1,6 +1,6 @@
 {
   "name": "viewport-detection-es6",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Viewport detaction in es6 ",
   "main": "index.js",
   "scripts": {
