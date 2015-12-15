@@ -11,10 +11,13 @@ var ViewportDetection = (function () {
     key: "addCallback",
     value: function addCallback(c) {
       if (_.isFunction(c)) {
-        this.callbacks.push(c);
+        var id = _.uniqueId();
+        this.callbacks.push({ cb: c, id: id });
       } else {
         throw new Error("Not a function");
       }
+
+      return id;
     }
   }]);
 
@@ -29,9 +32,7 @@ var ViewportDetection = (function () {
     this.currentWidth = 0;
     this.callbacks = [];
     this.trackerCalled = false;
-    if (_.isFunction(cb)) {
-      this.callbacks.push(cb);
-    }
+    this.id = addCallback(c);
   }
 
   _createClass(ViewportDetection, [{
@@ -92,9 +93,9 @@ var ViewportDetection = (function () {
     }
   }, {
     key: "removeCallback",
-    value: function removeCallback(fn) {
+    value: function removeCallback(id) {
       return _.remove(this.callbacks, function (cb) {
-        return cb === fn;
+        return cb.id === id;
       });
     }
   }, {
@@ -109,8 +110,8 @@ var ViewportDetection = (function () {
     key: "runCallBacks",
     value: function runCallBacks(size) {
       var device = this.getDevice(size.width);
-      _.forEach(this.callbacks, function (cb) {
-        cb(device, size);
+      _.forEach(this.callbacks, function (calls) {
+        calls.cb(device, size);
       });
     }
   }, {
@@ -131,11 +132,13 @@ var ViewportDetection = (function () {
   }, {
     key: "trackSize",
     value: function trackSize(callback) {
-      this.addCallback(callback);
+      var id = this.addCallback(callback);
 
       if (!this.trackerCalled) {
         window.addEventListener("DOMContentLoaded", this.init.bind(this), false);
       }
+
+      return id;
     }
   }, {
     key: "windowSize",
