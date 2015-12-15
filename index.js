@@ -87,7 +87,15 @@ var ViewportDetection = (function () {
       var ua = window.navigator.userAgent || window.navigator.vendor || window.opera;
 
       //Checks for iOs, Android, Blackberry, Opera Mini, and Windows mobile devices
-      return /iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/.test(ua);
+      return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/.test(ua)
+      );
+    }
+  }, {
+    key: "removeCallback",
+    value: function removeCallback(fn) {
+      return _.remove(this.callbacks, function (cb) {
+        return cb === fn;
+      });
     }
   }, {
     key: "resizeFn",
