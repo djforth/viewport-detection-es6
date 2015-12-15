@@ -11,7 +11,7 @@ var ViewportDetection = (function () {
     key: "addCallback",
     value: function addCallback(c) {
       if (_.isFunction(c)) {
-        var id = _.uniqueId();
+        var id = this.id = _.uniqueId();
         this.callbacks.push({ cb: c, id: id });
       } else {
         throw new Error("Not a function");
@@ -32,7 +32,7 @@ var ViewportDetection = (function () {
     this.currentWidth = 0;
     this.callbacks = [];
     this.trackerCalled = false;
-    this.id = addCallback(c);
+    this.id = this.addCallback(c);
   }
 
   _createClass(ViewportDetection, [{
@@ -67,6 +67,11 @@ var ViewportDetection = (function () {
         this.currentWidth = w;
       }
       return this.currentWidth;
+    }
+  }, {
+    key: "getLastId",
+    value: function getLastId() {
+      return this.id;
     }
   }, {
     key: "init",
