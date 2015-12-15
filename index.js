@@ -32,7 +32,9 @@ var ViewportDetection = (function () {
     this.currentWidth = 0;
     this.callbacks = [];
     this.trackerCalled = false;
-    this.id = this.addCallback(c);
+    if (_.isFunction(c)) {
+      this.id = this.addCallback(cb);
+    }
   }
 
   _createClass(ViewportDetection, [{
