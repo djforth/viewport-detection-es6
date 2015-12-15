@@ -32,7 +32,7 @@ var ViewportDetection = (function () {
     this.currentWidth = 0;
     this.callbacks = [];
     this.trackerCalled = false;
-    if (_.isFunction(c)) {
+    if (_.isFunction(cb)) {
       this.id = this.addCallback(cb);
     }
   }
