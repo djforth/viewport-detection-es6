@@ -25,8 +25,8 @@ var ViewportDetection = (function () {
     _classCallCheck(this, ViewportDetection);
 
     this.breakpoints = {
-      mobile: { st: 0, fn: 768 },
-      tablet: { st: 769, fn: 992 },
+      mobile: { st: 0, fn: 767 },
+      tablet: { st: 768, fn: 992 },
       desktop: { st: 993, fn: "max" }
     };
     this.currentWidth = 0;
@@ -40,11 +40,11 @@ var ViewportDetection = (function () {
   _createClass(ViewportDetection, [{
     key: "checkWidths",
     value: function checkWidths(w, st, fn) {
-      if (fn === "max" && w > st) {
+      if (fn === "max" && w >= st) {
         return true;
       }
 
-      return w > st && w < fn;
+      return w >= st && w <= fn;
     }
   }, {
     key: "getDevice",

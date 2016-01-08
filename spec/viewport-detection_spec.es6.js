@@ -18,8 +18,8 @@ describe('viewport-detection-es6', function() {
       expect(viewport.currentWidth).toEqual(0);
       expect(viewport.callbacks).toEqual([]);
       expect(viewport.trackerCalled).toBeFalsy();
-      expect(viewport.breakpoints.mobile).toEqual({st:0, fn:768});
-      expect(viewport.breakpoints.tablet).toEqual({st:769, fn:992});
+      expect(viewport.breakpoints.mobile).toEqual({st:0, fn:767});
+      expect(viewport.breakpoints.tablet).toEqual({st:768, fn:992});
       expect(viewport.breakpoints.desktop).toEqual({st:993, fn:"max"});
     });
 
@@ -61,13 +61,13 @@ describe('viewport-detection-es6', function() {
       });
 
       it("should set to tablet", function() {
-        val = 769;
+        val = 768;
 
         let device = viewport.getDevice();
         expect(device).toEqual("tablet")
       });
 
-      it("should set to tablet", function() {
+      it("should set to desktop", function() {
         val = 993;
 
         let device = viewport.getDevice();
@@ -83,7 +83,7 @@ describe('viewport-detection-es6', function() {
     });
 
     it("should return true if width is larger than st and small then fn", function() {
-      let check = viewport.checkWidths(1000, 992, 1199);
+      let check = viewport.checkWidths(992, 992, 1199);
       expect(check).toBeTruthy()
     });
 
