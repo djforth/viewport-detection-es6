@@ -161,5 +161,3 @@ var ViewportDetection = (function () {
 })();
 
 module.exports = ViewportDetection;
-
-//# sourceMappingURL=index.js.map
