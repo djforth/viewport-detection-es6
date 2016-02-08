@@ -4,7 +4,8 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _ = require("lodash");
+var _ = require("lodash/core");
+var forIn = require("lodash/forIn");
 
 var ViewportDetection = (function () {
   _createClass(ViewportDetection, [{
@@ -54,7 +55,7 @@ var ViewportDetection = (function () {
       var winWidth = this.windowSize().width;
       var device = "desktop";
 
-      _.forIn(this.breakpoints, function (v, k) {
+      forIn(this.breakpoints, function (v, k) {
         if (_this.checkWidths(winWidth, v.st, v.fn)) {
           device = k;
         }
