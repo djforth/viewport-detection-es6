@@ -51,7 +51,7 @@
     "uglifyify": "^3.0.1",
     "watchify": "^3.2.3"
   },
-  "dependencies": {
-    "lodash": "^3.10.1"
+  "peerDependencies": {
+    "lodash": "^4.3.0"
   }
 }
