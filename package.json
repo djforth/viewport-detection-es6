@@ -46,13 +46,13 @@
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-safari-launcher": "^0.1.1",
     "karma-story-reporter": "^0.3.1",
-    "lodash": "^4.3.0",
+    "lodash": "^4.6.0",
     "phantomjs": "^1.9.17",
     "rewireify": "^0.2.1",
     "uglifyify": "^3.0.1",
     "watchify": "^3.2.3"
   },
   "peerDependencies": {
-    "lodash": "^4.3.0"
+    "lodash": "^4.6.0"
   }
 }
