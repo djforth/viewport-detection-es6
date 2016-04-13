@@ -1,1 +1,1 @@
-module.exports = require('lib/viewport-detection');
+module.exports = require('./lib/viewport-detection');
