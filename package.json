@@ -3,6 +3,11 @@
   "version": "2.1.1",
   "description": "Viewport detaction in es6 ",
   "main": "index.js",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "assets": {
     "assets_in": "./src",
     "assets_out": "./lib",
