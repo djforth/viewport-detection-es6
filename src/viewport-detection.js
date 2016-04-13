@@ -67,7 +67,7 @@ class ViewportDetection {
     init(){
        let tracker = ()=>{
           this.resizeFn();
-       }.bind(this);
+       };
 
        window.addEventListener(
           "resize", tracker, false

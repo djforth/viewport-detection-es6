@@ -1,4 +1,4 @@
-const Viewport = require('../lib/viewport-detection.es6.js');
+const Viewport = require('../src/viewport-detection');
 
 const _ = require('lodash');
 

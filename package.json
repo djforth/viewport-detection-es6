@@ -3,18 +3,21 @@
   "version": "2.0.4",
   "description": "Viewport detaction in es6 ",
   "main": "index.js",
+  "assets": {
+    "assets_in": "./src",
+    "assets_out": "./lib",
+    "karma": {
+      "input": "./spec"
+    }
+  },
   "scripts": {
-    "bundle": "browserify lib/viewport-detection.es6.js -t babelify  --stage 0 --extension=\"es6.js\" -t uglifyify --exclude babelify/polyfill --exclude lodash > dist/viewport-detection.min.js",
-    "bundle:es6": " babel lib/viewport-detection.es6.js --out-file index.js --stage 0",
-    "bundle:watch": "watchify lib/viewport-detection.es6.js -t babelify  --stage 0 --extension=\"es6.js\" --exclude babelify/polyfill --exclude lodash -o dist/viewport-detection.js",
-    "build": "npm run bundle && npm run bundle:es6",
-    "lint": "eslint lib/**",
+    "build": "babel src -x '.js'  -d lib",
+    "build:watch": "babel src -x '.js' -w --source-maps  -d lib",
+    "lint": "eslint src/**",
     "lint:tests": "eslint spec/**",
-    "test": "npm run lint & ./node_modules/.bin/karma start --browsers PhantomJS --single-run",
-    "test:watch": "karma start --browsers PhantomJS",
-    "test:ie9": "karma start --single-run --browsers \"IE9 - Win7\"",
-    "test:ie10": "karma start --single-run --browsers \"IE10 - Win7\"",
-    "test:mac": "karma start --single-run --browsers Chrome,Firefox,Safari,Opera"
+    "test": "npm run lint && asset-pipeline-karma",
+    "test:watch": "asset-pipeline-karma -w",
+    "test:mac": "asset-pipeline-karma -b"
   },
   "repository": {
     "type": "git",
@@ -27,32 +30,21 @@
   },
   "homepage": "https://github.com/djforth/viewport-detection-es6#readme",
   "devDependencies": {
-    "babel": "^5.6.14",
-    "babel-eslint": "^3.1.23",
-    "babelify": "^6.1.3",
-    "browserify": "^10.2.6",
-    "eslint": "^0.24.1",
-    "jasmine-core": "^2.3.4",
-    "karma": "^0.12.37",
-    "karma-babel-preprocessor": "^5.2.1",
-    "karma-browserify": "^4.2.1",
-    "karma-chrome-launcher": "^0.2.0",
-    "karma-coverage": "^0.4.2",
-    "karma-firefox-launcher": "^0.1.6",
-    "karma-ie-launcher": "^0.2.0",
-    "karma-ievms": "0.0.4",
-    "karma-jasmine": "^0.3.6",
-    "karma-opera-launcher": "^0.2.0",
-    "karma-phantomjs-launcher": "^0.2.0",
-    "karma-safari-launcher": "^0.1.1",
-    "karma-story-reporter": "^0.3.1",
-    "lodash": "^4.6.0",
-    "phantomjs": "^1.9.17",
-    "rewireify": "^0.2.1",
-    "uglifyify": "^3.0.1",
-    "watchify": "^3.2.3"
+    "@djforth/ap_karma": "^1.0.0",
+    "@djforth/ap_utils": "^2.0.13",
+    "@djforth/morse-jasmine": "^1.0.10",
+    "babel": "^6.5.2",
+    "babel-cli": "^6.6.5",
+    "babel-eslint": "^6.0.2",
+    "babel-polyfill": "^6.7.2",
+    "babel-preset-es2015": "^6.6.0",
+    "eslint": "^2.3.0",
+    "eslint-config-google": "^0.5.0",
+    "estraverse-fb": "^1.3.1",
+    "jasmine-ajax": "^3.2.0",
+    "lodash": "~4.8.2"
   },
   "peerDependencies": {
-    "lodash": "^4.6.0"
+    "lodash": "~4.8.2"
   }
 }
