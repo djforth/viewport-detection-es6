@@ -1,6 +1,6 @@
-const Viewport = require('../src/viewport-detection');
+import Viewport from '../src/viewport-detection';
 
-const _ = require('lodash');
+import _ from 'lodash';
 
 
 describe('viewport-detection-es6', function() {

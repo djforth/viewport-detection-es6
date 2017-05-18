@@ -1,0 +1,5 @@
+{
+  "karma": {
+    "input": "./__tests__/viewport-detection_spec.js"
+  }
+}
