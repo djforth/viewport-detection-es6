@@ -1,4 +1,4 @@
-import Viewport from '../src/viewport-detection';
+import Viewport from '../src';
 
 import _ from 'lodash';
 

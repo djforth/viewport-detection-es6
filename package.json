@@ -16,7 +16,7 @@
     }
   },
   "scripts": {
-    "build": "NODE_ENV=production babel src -x '.js'  -d lib",
+    "build": "NODE_ENV=production babel src/index.js --out-file index.js",
     "build:watch": "babel src -x '.js' -w --source-maps  -d lib",
     "lint": "eslint src/** --fix",
     "lint:tests": "eslint spec/** --fix",
