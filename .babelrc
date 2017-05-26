@@ -1,13 +1,14 @@
 {
   "presets": [
-    ["es2015", {"modules": false}],
+    "es2015",
     "es2016",
     "es2017"
   ],
   "env": {
     "production": {
       "plugins": [
-        "lodash"
+        "lodash",
+        "add-module-exports"
       ]
       , "presets": [
         ["env", {

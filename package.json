@@ -1,6 +1,6 @@
 {
   "name": "viewport-detection-es6",
-  "version": "2.1.4",
+  "version": "2.1.6",
   "description": "Viewport detaction in es6 ",
   "main": "index.js",
   "babel": {
@@ -16,8 +16,8 @@
     }
   },
   "scripts": {
-    "build": "NODE_ENV=production babel src/index.js --out-file index.js",
-    "build:watch": "babel src -x '.js' -w --source-maps  -d lib",
+    "build": "NODE_ENV=production babel src/index.js --source-maps --out-file index.js",
+    "build:watch": "NODE_ENV=production babel src/index.js -x '.js' -w --source-maps  --out-file index.js",
     "lint": "eslint src/** --fix",
     "lint:tests": "eslint spec/** --fix",
     "test": "npm run lint && asset-pipeline-karma",

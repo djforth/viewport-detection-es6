@@ -1,7 +1,6 @@
 /* eslint-disable */
 import _ from 'lodash';
 import remove from 'lodash/remove';
-_.remove    = remove;
 import forIn from 'lodash/forIn';
 /* eslint-enable */
 
@@ -92,7 +91,7 @@ class ViewportDetection{
     }
 
     removeCallback(id){
-      return _.remove(this.callbacks, function(cb){
+      return remove(this.callbacks, function(cb){
         return cb.id === id;
       });
     }
